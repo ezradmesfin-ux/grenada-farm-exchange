@@ -1,0 +1,12 @@
+{
+  "name": "grenada-farm-exchange",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "bun src/server.ts",
+    "dev": "bun --watch src/server.ts",
+    "test": "bun test",
+    "create-admin": "bun scripts/create-admin.ts"
+  }
+}

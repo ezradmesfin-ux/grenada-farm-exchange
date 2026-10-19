@@ -1,0 +1,32 @@
+# Render Blueprint. Render reads this file and creates the web app and its database together.
+# You can change the plans later in Render's dashboard. Check Render's current pricing first.
+services:
+  - type: web
+    name: grenada-farm-exchange
+    runtime: docker
+    region: virginia
+    plan: 0.5c-512mb
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: grenada-farm-exchange-db
+          property: connectionString
+      # Render asks you for these five when you create the Blueprint.
+      - key: BASE_URL
+        sync: false
+      - key: OPERATOR_NAME
+        sync: false
+      - key: CONTACT_EMAIL
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_INITIAL_PASSWORD
+        sync: false
+
+databases:
+  - name: grenada-farm-exchange-db
+    region: virginia
+    plan: 0.1c-256mb
